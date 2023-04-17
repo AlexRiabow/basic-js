@@ -15,13 +15,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function createDreamTeam(members) {
   if (!Array.isArray(members)){return false};
-  let teamName = new String;
+  let teamName = '';
   let teamNameUnsorted = [];
   let count = 0;
   for(let i = 0;i<members.length;i++){
     if(typeof members[i] === 'string'){
-      let teammate = members[i];
-      let letter = new String;
+      let teammate = members[i].trim();
+      let letter = '';
       let c = 0;
       let mark = 0;
       while(c<10){
@@ -36,7 +36,7 @@ function createDreamTeam(members) {
       count++;
     }
   }
-  teamNameUnsorted.sort();
+  teamNameUnsorted.sort((a,b) => a.localeCompare(b));
   for(let j = 0;j<teamNameUnsorted.length;j++){
     teamName = teamName + teamNameUnsorted[j];
   }
